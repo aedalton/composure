@@ -2,7 +2,7 @@
 FROM python:3.7-alpine
 
 # set working directory to src
-WORKDIR /src
+WORKDIR /code
 
 # set environment variables used by flask command
 ENV FLASK_APP app.py
@@ -15,7 +15,7 @@ RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 # install the python dependencies
 RUN pip install -r requirements.txt
-# copy the current directory in the project to the working directory image
+
 COPY . .
 # set the default command for the container to flask run
 CMD ["flask", "run"]
